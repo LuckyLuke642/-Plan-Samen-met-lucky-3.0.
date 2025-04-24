@@ -5,7 +5,12 @@
     "start": "vercel dev"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.0",
     "@tanstack/react-query": "^5.74.4",
-    "@types/react-dom": "^18.3.6"
+    "@types/react-dom": "^18.3.6",
+    "class-variance-authority": "^0.7.1",
+    "lucide-react": "^0.503.0",
+    "react-day-picker": "^9.6.7",
+    "react-dom": "^19.1.0"
   }
 }

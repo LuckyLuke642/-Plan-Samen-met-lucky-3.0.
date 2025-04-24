@@ -1,55 +1,22 @@
 
 import React from "react";
-import QuestionInput from "@/components/QuestionInput";
-import ResponseDisplay from "@/components/ResponseDisplay";
-import AudioPlayer from "@/components/AudioPlayer";
-import { supabase } from "@/integrations/supabase/client";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
-const Index = () => {
-  const [response, setResponse] = React.useState("");
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [audioUrl, setAudioUrl] = React.useState<string | null>(null);
-
-  const handleQuestionSubmit = async (text: string) => {
-    setIsLoading(true);
-    setResponse("");
-    setAudioUrl(null);
-
-    try {
-      const { data, error } = await supabase.functions.invoke('lucky-command', {
-        body: {
-          user: 'Luc',
-          device: 'Loverboel01',
-          message: text
-        }
-      });
-
-      if (error) throw error;
-
-      setResponse(data.reply || 'Geen antwoord van Lucky ontvangen.');
-      if (data.audio_url) {
-        setAudioUrl(data.audio_url);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      setResponse('Er ging iets mis bij het versturen van je vraag.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
+const Index: React.FC = () => {
   return (
-    <div className="min-h-screen bg-[#fff3e0] p-6 md:p-8">
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl md:text-4xl font-bold text-[#d84315] mb-6">
-          Welkom bij <strong>PlanSamen met Lucky 3.0</strong>
-        </h1>
-        <p className="text-gray-600 mb-4">Typ je vraag of notitie hieronder, Lucky luistert altijd:</p>
-        
-        <QuestionInput onSubmit={handleQuestionSubmit} isLoading={isLoading} />
-        <ResponseDisplay response={response} isLoading={isLoading} />
-        <AudioPlayer audioUrl={audioUrl} />
-      </div>
+    <div className="container mx-auto px-4 py-12 flex flex-col items-center justify-center min-h-screen">
+      <h1 className="text-4xl font-bold text-center mb-6">
+        Lucky Assistant
+      </h1>
+      <p className="text-lg text-center mb-8">
+        Welkom bij de Lucky Assistant. Plan samen met Lucky!
+      </p>
+      <Link to="/lucky">
+        <Button className="bg-[#ff7043] hover:bg-[#ff5722] text-white">
+          Start met Lucky
+        </Button>
+      </Link>
     </div>
   );
 };
