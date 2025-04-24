@@ -5,9 +5,13 @@
     "start": "vercel dev"
   },
   "dependencies": {
+    "@radix-ui/react-alert-dialog": "^1.1.11",
     "@radix-ui/react-slot": "^1.2.0",
+    "@radix-ui/react-tabs": "^1.1.9",
     "@tanstack/react-query": "^5.74.4",
-    "@types/react-dom": "^18.3.6",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react-swc": "^3.9.0",
     "class-variance-authority": "^0.7.1",
     "lucide-react": "^0.503.0",
     "react-day-picker": "^9.6.7",
