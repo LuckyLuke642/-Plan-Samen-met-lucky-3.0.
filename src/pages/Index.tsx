@@ -3,6 +3,7 @@ import React from "react";
 import QuestionInput from "@/components/QuestionInput";
 import ResponseDisplay from "@/components/ResponseDisplay";
 import AudioPlayer from "@/components/AudioPlayer";
+import { supabase } from "@/integrations/supabase/client";
 
 const Index = () => {
   const [response, setResponse] = React.useState("");
@@ -14,13 +15,27 @@ const Index = () => {
     setResponse("");
     setAudioUrl(null);
 
-    // Simulate API call
-    setTimeout(() => {
-      setResponse("✅ Checklist is opgehaald: 1. Sokken mee 2. Notitieblok 3. Rustig ademen");
+    try {
+      const { data, error } = await supabase.functions.invoke('lucky-command', {
+        body: {
+          user: 'Luc',
+          device: 'Loverboel01',
+          message: text
+        }
+      });
+
+      if (error) throw error;
+
+      setResponse(data.reply || 'Geen antwoord van Lucky ontvangen.');
+      if (data.audio_url) {
+        setAudioUrl(data.audio_url);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setResponse('Er ging iets mis bij het versturen van je vraag.');
+    } finally {
       setIsLoading(false);
-      // Simulated audio URL - replace with actual audio URL in production
-      setAudioUrl("https://example.com/audio.mp3");
-    }, 1500);
+    }
   };
 
   return (
