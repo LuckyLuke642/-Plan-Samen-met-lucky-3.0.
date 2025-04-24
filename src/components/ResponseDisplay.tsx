@@ -12,10 +12,10 @@ const ResponseDisplay = ({ response, isLoading }: ResponseDisplayProps) => {
 
   return (
     <Card className="mt-6 p-4 bg-white/50 backdrop-blur-sm">
-      <p className="text-gray-800">
+      <p className={`text-gray-800 ${isLoading ? 'italic' : ''}`}>
         {isLoading ? (
           <span className="flex items-center gap-2">
-            Lucky denkt na...
+            Lucky denkt even na...
             <span className="inline-block animate-spin">⏳</span>
           </span>
         ) : (

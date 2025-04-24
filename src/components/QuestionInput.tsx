@@ -23,7 +23,7 @@ const QuestionInput = ({ onSubmit, isLoading }: QuestionInputProps) => {
       <Textarea
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
-        placeholder="Bijv. Lees mijn laatste checklist voor"
+        placeholder="Bijv. Lees mijn laatste notitie voor of Maak een nieuwe afspraak voor morgen..."
         className="min-h-[100px] bg-white/50 backdrop-blur-sm"
         disabled={isLoading}
       />

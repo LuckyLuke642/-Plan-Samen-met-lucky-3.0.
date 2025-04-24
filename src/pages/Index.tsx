@@ -24,12 +24,12 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#fff8e1] p-6 md:p-8">
+    <div className="min-h-screen bg-[#fff3e0] p-6 md:p-8">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-          Welkom bij PlanSamen, Loverboel!
+        <h1 className="text-3xl md:text-4xl font-bold text-[#d84315] mb-6">
+          Welkom bij <strong>PlanSamen met Lucky 3.0</strong>
         </h1>
-        <p className="text-gray-600 mb-4">Typ je vraag of notitie hieronder:</p>
+        <p className="text-gray-600 mb-4">Typ je vraag of notitie hieronder, Lucky luistert altijd:</p>
         
         <QuestionInput onSubmit={handleQuestionSubmit} isLoading={isLoading} />
         <ResponseDisplay response={response} isLoading={isLoading} />
